@@ -8,6 +8,7 @@ import Teams from "./pages/User/Teams/Teams";
 import Matches from "./pages/User/Matches/Matches";
 import { AuthProvider } from "./Hooks/useUser";
 import TeamRegister from "./pages/User/TeamRegister/TeamRegister";
+import TeamView from "./pages/User/Teams/TeamView";
 
 const routers = createBrowserRouter([
 	{
@@ -21,6 +22,10 @@ const routers = createBrowserRouter([
 			{
 				path: "teams",
 				element: <Teams />,
+			},
+			{
+				path: "teams/:teamID",
+				element: <TeamView />,
 			},
 			{
 				path: "matches",
