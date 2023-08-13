@@ -14,9 +14,22 @@
 			align-items: center;
 		}
 
+		a.active {
+			color: var(--secondary);
+		}
+
 		img {
 			width: 50px;
 			margin: 0 10px;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.logo {
+			margin: 5px 0;
+			span {
+				display: none;
+			}
 		}
 	}
 
@@ -30,10 +43,36 @@
 
 			a {
 				display: inline-block;
-				padding: 10px;
+				padding: 5px;
 				text-decoration: none;
+				color: white;
+			}
+
+			a.active {
 				color: var(--secondary);
 			}
 		}
+	}
+
+	.menu {
+		position: relative;
+		img {
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+			border-radius: 50%;
+         cursor: pointer;
+		}
+	}
+
+	.sub-menu {
+		position: absolute;
+		background-color: white;
+		color: black;
+		padding: 10px;
+      right: 10px;
+      border-radius: 10px;
+      width: 180px;
+      box-shadow: 1px 1px 5px black;
 	}
 }
