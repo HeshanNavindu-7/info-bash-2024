@@ -14,9 +14,22 @@
 			align-items: center;
 		}
 
+		a.active {
+			color: var(--secondary);
+		}
+
 		img {
 			width: 50px;
 			margin: 0 10px;
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.logo {
+			margin: 5px 0;
+			span {
+				display: none;
+			}
 		}
 	}
 
@@ -30,10 +43,23 @@
 
 			a {
 				display: inline-block;
-				padding: 10px;
+				padding: 5px;
 				text-decoration: none;
+				color: white;
+			}
+
+			a.active {
 				color: var(--secondary);
 			}
+		}
+	}
+
+	.menu {
+		img {
+			width: 40px;
+			height: 40px;
+			margin-right: 10px;
+			border-radius: 50%;
 		}
 	}
 }
