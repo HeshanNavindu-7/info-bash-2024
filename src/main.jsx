@@ -4,11 +4,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./main.scss";
 import User from "./pages/User/User.jsx";
 import HomePage from "./pages/User/Home/HomePage";
-import Teams from "./pages/User/Teams/Teams";
-import Matches from "./pages/User/Matches/Matches";
+import UserTeams from "./pages/User/Teams/Teams";
+import UserMatches from "./pages/User/Matches/Matches";
 import { AuthProvider } from "./Hooks/useUser";
 import TeamRegister from "./pages/User/TeamRegister/TeamRegister";
-import TeamView from "./pages/User/Teams/TeamView";
+import Admin from "./pages/Admin/Admin";
+import AdminTeams from "./pages/Admin/Teams/Teams";
+import Groups from "./pages/Admin/Groups/Groups";
+import AdminMatches from "./pages/Admin/Matches/Matches";
+import UserTeamView from "./pages/User/Teams/TeamView";
 
 const routers = createBrowserRouter([
 	{
@@ -21,19 +25,37 @@ const routers = createBrowserRouter([
 			},
 			{
 				path: "teams",
-				element: <Teams />,
+				element: <UserTeams />,
 			},
 			{
 				path: "teams/:teamID",
-				element: <TeamView />,
+				element: <UserTeamView />,
 			},
 			{
 				path: "matches",
-				element: <Matches />,
+				element: <UserMatches />,
 			},
 			{
 				path: "team-register",
 				element: <TeamRegister />,
+			},
+		],
+	},
+	{
+		path: "/admin",
+		element: <Admin />,
+		children: [
+			{
+				index: true,
+				element: <AdminTeams />,
+			},
+			{
+				path: "groups",
+				element: <Groups />,
+			},
+			{
+				path: "matches",
+				element: <AdminMatches />,
 			},
 		],
 	},

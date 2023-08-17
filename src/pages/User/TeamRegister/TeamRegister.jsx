@@ -95,7 +95,7 @@ function TeamData() {
 			setDoc(d, {
 				teamName: form_data.get("team-name"),
 				players,
-				status: 0, // 0: Pending, 1: Approved, 2: Admin deleted
+				status: "pending",
 			})
 		);
 
