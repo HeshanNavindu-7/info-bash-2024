@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
+import "./NavBar.scss";
 
 function NavBar() {
 	return (
-		<nav>
+		<nav className="admin-nav-bar">
 			<ul>
 				<li>
-					<NavLink to="/admin">Teams</NavLink>
+					<NavLink to="/admin/teams">Teams</NavLink>
 				</li>
 				<li>
 					<NavLink to="/admin/groups">Groups</NavLink>

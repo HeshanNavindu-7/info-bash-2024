@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./main.scss";
 import User from "./pages/User/User.jsx";
 import HomePage from "./pages/User/Home/HomePage";
@@ -47,6 +47,10 @@ const routers = createBrowserRouter([
 		children: [
 			{
 				index: true,
+				element: <Navigate to="/admin/teams" />,
+			},
+			{
+				path: "teams",
 				element: <AdminTeams />,
 			},
 			{

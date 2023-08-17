@@ -6,7 +6,7 @@ import { FS } from "../../../firebase.init";
 
 function UserTeamView() {
 	const { teamID } = useParams();
-	const [data, setData] = useState({ players: [] });
+	const [data, setData] = useState(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -17,11 +17,11 @@ function UserTeamView() {
 				navigate("/teams");
 				return;
 			}
-
-			setData(t);
+			setData({ ...t, id: snap.id });
 		});
 	}, []);
 
+	if (data === null) return "";
 	return <TeamView data={data} />;
 }
 
