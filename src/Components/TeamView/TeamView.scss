@@ -1,0 +1,12 @@
+.team-view {
+	background: white;
+	color: black;
+	display: flex;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 10px;
+
+	div:nth-child(1) {
+		margin-right: 10px;
+	}
+}
