@@ -1,0 +1,169 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+.team-register {
+	height: calc(100vh - 65px);
+	background-image: url("/images/background-3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	font-family: Roboto;
+	overflow-y: auto;
+
+	.google-connect {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+	}
+
+	.title {
+		width: 60%;
+		text-align: center;
+		color: black;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.726);
+		margin: 20px 0;
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	.team-data {
+		display: flex;
+		justify-content: center;
+
+		form {
+			background-color: rgba(255, 255, 255, 0.725);
+			color: black;
+			padding: 20px;
+			margin: 20px 0;
+			border-radius: 10px;
+         max-width: 400px;
+         width: 400px;
+         box-shadow: 5px 5px 10px #393939;
+
+			.error {
+				background: rgb(191, 81, 81);
+				padding: 20px;
+				margin: 10px 0;
+            border-radius: 10px;
+			}
+
+			.btn-holder {
+				display: flex;
+				justify-content: center;
+			}
+
+			.form-group {
+				margin-bottom: 10px;
+
+				input {
+					width: 100%;
+					box-sizing: border-box;
+					margin-top: 5px;
+					padding: 10px;
+				}
+
+				label {
+					display: block;
+				}
+
+				.btn {
+					padding: 15px 20px;
+					background-color: #0e1628;
+					color: white;
+					font-weight: bold;
+					border: none;
+					border-radius: 5px;
+					letter-spacing: 4px;
+					overflow: hidden;
+					transition: 0.2s;
+					cursor: pointer;
+				}
+
+				.btn:hover {
+					background: #03e9f4;
+					color: #050801;
+					box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
+					-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+				}
+			}
+		}
+	}
+
+   table {
+      width: 100%;
+   }
+}
+
+$white: #fff;
+$google-blue: #4285f4;
+$button-active-blue: #1669f2;
+
+.google-btn {
+	cursor: pointer;
+	width: 184px;
+	height: 42px;
+	background-color: $google-blue;
+	border-radius: 2px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+	.google-icon-wrapper {
+		position: absolute;
+		margin-top: 1px;
+		margin-left: 1px;
+		width: 40px;
+		height: 40px;
+		border-radius: 2px;
+		background-color: $white;
+	}
+	.google-icon {
+		position: absolute;
+		margin-top: 11px;
+		margin-left: 11px;
+		width: 18px;
+		height: 18px;
+	}
+	.btn-text {
+		float: right;
+		margin: 11px 11px 0 0;
+		color: $white;
+		font-size: 14px;
+		letter-spacing: 0.2px;
+		font-family: "Roboto";
+	}
+	&:hover {
+		box-shadow: 0 0 6px $google-blue;
+	}
+	&:active {
+		background: $button-active-blue;
+	}
+}
+
+.btn-add-player {
+   padding: 10px;
+   width: 100%;
+}
+
+.close-btn {
+   background: none;
+   border: none;
+   cursor: pointer;
+   font-family: Arial;
+   font-size: 20px;
+   border-radius: 50%;
+   display: flex;
+   width: 40px;
+   height: 40px;
+   justify-content: center;
+   align-items: center;
+   transition: 0.2s;
+
+   &:hover {
+      background-color: rgb(171, 171, 171);
+   }
+}

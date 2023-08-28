@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useUser } from "../../../Hooks/useUser";
 import { App, Auth, FS } from "../../../firebase.init";
 import { useNavigate } from "react-router-dom";
+import "./TeamRegister.scss";
 
 const provider = new GoogleAuthProvider();
 
@@ -25,9 +26,23 @@ function ConnectWithGoogle() {
 	}
 
 	return (
-		<div>
-			<p>First you need to get connected</p>
-			<button onClick={signIn}>Connect Google</button>
+		<div className="google-connect">
+			<div className="container">
+				<div className="title">
+					<h1>Connect with Google to register your team</h1>
+				</div>
+				<div onClick={signIn} className="google-btn">
+					<div className="google-icon-wrapper">
+						<img
+							className="google-icon"
+							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+						/>
+					</div>
+					<p className="btn-text">
+						<b>Sign in with google</b>
+					</p>
+				</div>
+			</div>
 		</div>
 	);
 }
@@ -69,9 +84,9 @@ function TeamData() {
 			return;
 		}
 
-		if (players.length < 4) {
+		if (players.length < 1) {
 			setDis(false);
-			setErr("Minimum player count is 4");
+			setErr("Minimum player count is 9");
 			return;
 		}
 
@@ -111,47 +126,56 @@ function TeamData() {
 	}, []);
 
 	return (
-		<form ref={form} onSubmit={register}>
-			<div>
-				<label htmlFor="team-name">Team Name</label>
-				<input autoComplete="off" type="text" name="team-name" id="team-name" placeholder="Team Name" />
-			</div>
-			<div>
-				<label htmlFor="team-logo">Team Logo</label>
-				<input type="file" accept="image/*" name="team-logo" id="team-logo" />
-			</div>
-			<div>
-				<label htmlFor="player-name">Team Data</label>
-				<input autoComplete="off" ref={inp} type="text" name="player-name" id="player-name" placeholder="Player Name" />
-				<button onClick={addPlayer} type="button">
-					Add Player
-				</button>
-			</div>
-			<div>
-				<table>
-					<tbody>
-						{players.map((i, k) => (
-							<tr key={k}>
-								<td>{i}</td>
-								<td>
-									<button type="button" onClick={removePlayer.bind(undefined, k)}>
-										x
-									</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
-			<div hidden={err === null} className="error">
-				{err}
-			</div>
-			<div>
-				<button disabled={dis} type="submit">
-					Register
-				</button>
-			</div>
-		</form>
+		<div className="team-data">
+			<form ref={form} onSubmit={register}>
+				<div className="form-group">
+					<label htmlFor="team-name">Team Name</label>
+					<input autoComplete="off" type="text" name="team-name" id="team-name" placeholder="Team Name" />
+				</div>
+				<div className="form-group">
+					<label htmlFor="team-logo">Team Logo</label>
+					<input type="file" accept="image/*" name="team-logo" id="team-logo" />
+				</div>
+				<div className="form-group">
+					<label htmlFor="player-name">Players List</label>
+					<input
+						autoComplete="off"
+						ref={inp}
+						type="text"
+						name="player-name"
+						id="player-name"
+						placeholder="Player Name"
+					/>
+					<button className="btn-add-player" onClick={addPlayer} type="button">
+						Add Player
+					</button>
+				</div>
+				<div className="form-group">
+					<table>
+						<tbody>
+							{players.map((i, k) => (
+								<tr key={k}>
+									<td>{i}</td>
+									<td width={50}>
+										<span className="close-btn" type="button" onClick={removePlayer.bind(undefined, k)}>
+											x
+										</span>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+				<div hidden={err === null} className="error">
+					{err}
+				</div>
+				<div className="form-group btn-holder">
+					<button className="btn" disabled={dis} type="submit">
+						Register
+					</button>
+				</div>
+			</form>
+		</div>
 	);
 }
 
