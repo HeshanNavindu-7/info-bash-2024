@@ -13,6 +13,7 @@ import AdminTeams from "./pages/Admin/Teams/Teams";
 import Groups from "./pages/Admin/Groups/Groups";
 import AdminMatches from "./pages/Admin/Matches/Matches";
 import UserTeamView from "./pages/User/Teams/TeamView";
+import MatchEdit from "./pages/Admin/Matches/MatchEdit";
 
 const routers = createBrowserRouter([
 	{
@@ -60,6 +61,10 @@ const routers = createBrowserRouter([
 			{
 				path: "matches",
 				element: <AdminMatches />,
+			},
+			{
+				path: "matches/:matchID",
+				element: <MatchEdit />,
 			},
 		],
 	},
