@@ -42,6 +42,7 @@ function Matches() {
 						marksB: 0,
 						ballsB: 0,
 						wicketsB: 0,
+						status: "Not Started",
 					});
 				}
 			}
