@@ -84,9 +84,9 @@ function TeamData() {
 			return;
 		}
 
-		if (players.length < 1) {
+		if (players.length < 10) {
 			setDis(false);
-			setErr("Minimum player count is 9");
+			setErr("Minimum player count is 10");
 			return;
 		}
 

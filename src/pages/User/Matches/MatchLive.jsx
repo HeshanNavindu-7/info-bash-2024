@@ -17,10 +17,9 @@ function MatchLive() {
 
 	useEffect(() => {
 		const d = doc(FS, "matches", matchID);
-		return () =>
-			onSnapshot(d, (snap) => {
-				setMatch(snap.data());
-			});
+		return onSnapshot(d, (snap) => {
+			setMatch(snap.data());
+		});
 	}, []);
 
 	return (

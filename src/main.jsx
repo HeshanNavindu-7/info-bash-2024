@@ -76,9 +76,7 @@ const routers = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<AuthProvider>
-			<RouterProvider router={routers} />
-		</AuthProvider>
-	</React.StrictMode>
+	<AuthProvider>
+		<RouterProvider router={routers} />
+	</AuthProvider>
 );

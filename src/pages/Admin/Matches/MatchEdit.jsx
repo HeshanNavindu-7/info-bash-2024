@@ -31,7 +31,9 @@ function MatchEdit() {
 	useEffect(() => {
 		const d = doc(FS, "matches", matchID);
 
-		return () => onSnapshot(d, (snap) => setData({ ...snap.data(), id: snap.id }));
+		return onSnapshot(d, (snap) => {
+			setData({ ...snap.data(), id: snap.id });
+		});
 	}, []);
 
 	function statusUpdate(s) {

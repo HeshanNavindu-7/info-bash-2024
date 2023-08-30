@@ -74,8 +74,6 @@ function Matches() {
 		const form_data = new FormData(cusForm.current);
 		setDis(true);
 
-		console.log(form_data);
-
 		const overs = parseInt(form_data.get("custom-overs"));
 		const balls = parseInt(form_data.get("custom-balls"));
 
