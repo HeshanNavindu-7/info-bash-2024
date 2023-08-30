@@ -14,6 +14,7 @@ import Groups from "./pages/Admin/Groups/Groups";
 import AdminMatches from "./pages/Admin/Matches/Matches";
 import UserTeamView from "./pages/User/Teams/TeamView";
 import MatchEdit from "./pages/Admin/Matches/MatchEdit";
+import MatchLive from "./pages/User/Matches/MatchLive";
 
 const routers = createBrowserRouter([
 	{
@@ -35,6 +36,10 @@ const routers = createBrowserRouter([
 			{
 				path: "matches",
 				element: <UserMatches />,
+			},
+			{
+				path: "matches/:matchID",
+				element: <MatchLive />,
 			},
 			{
 				path: "team-register",

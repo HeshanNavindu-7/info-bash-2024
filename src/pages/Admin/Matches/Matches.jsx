@@ -80,6 +80,32 @@ function Matches() {
 					Generate Round Matches
 				</button>
 			</form>
+			<hr />
+
+			<div className="custom-match">
+				<form>
+					<div>
+						<label htmlFor="custom-overs">Overs count: </label>
+						<input placeholder="Overs" type="text" name="custom-over" id="custom-overs" />
+					</div>
+					<div>
+						<label htmlFor="custom-balls">Balls count: </label>
+						<input placeholder="Balls per over" type="text" name="custom-over" id="custom-balls" />
+					</div>
+					<div>
+						<label htmlFor="match-type-r">Round Match</label>
+						<input defaultChecked type="radio" name="match-type" id="match-type-r" />
+					</div>
+					<div>
+						<label htmlFor="match-type-s">Semi Final</label>
+						<input type="radio" name="match-type" id="match-type-s" />
+					</div>
+					<div>
+						<label htmlFor="match-type-f">Final</label>
+						<input type="radio" name="match-type" id="match-type-f" />
+					</div>
+				</form>
+			</div>
 
 			<MatchesView />
 		</div>

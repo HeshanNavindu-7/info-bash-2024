@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteDoc, doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { FS } from "../../../firebase.init";
 import "./Match.scss";
 
@@ -11,6 +11,7 @@ function MatchEdit() {
 	const [teamB, setTeamB] = useState({});
 	const [selected, setSelected] = useState(null);
 	const [dis, setDis] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const d = doc(FS, "matches", matchID);
@@ -63,6 +64,16 @@ function MatchEdit() {
 					</button>
 					<button disabled={dis} onClick={() => statusUpdate("Paused")}>
 						Paused
+					</button>
+					<button
+						onClick={() => {
+							if (confirm("Sure to delete?"))
+								deleteDoc(doc(FS, "matches", data.id)).then(() => {
+									navigate("/admin/matches");
+								});
+						}}
+					>
+						Delete Match
 					</button>
 				</div>
 				<br />
