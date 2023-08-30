@@ -9,6 +9,15 @@ function MatchView({ data, isAdmin }) {
 	const [teamAData, setTeamAData] = useState({ img: "/images/info_bash-1.png" });
 	const [teamBData, setTeamBData] = useState({ img: "/images/info_bash-1.png" });
 	const navigate = useNavigate();
+	let won = null;
+
+	if (data.status == "Finished") {
+		if (data.marksA > data.marksB) {
+			won = "team-a";
+		} else if (data.marksB > data.marksA) {
+			won = "team-b";
+		}
+	}
 
 	useEffect(() => {
 		const da = doc(FS, "teams", teamA);
@@ -47,17 +56,17 @@ function MatchView({ data, isAdmin }) {
 			}
 			className="match-view"
 		>
-			<div className="team">
+			<div className={"team" + (won == "team-b" ? " lost-team" : "")}>
 				<span>{teamAData.teamName}</span>
 				<br />
 				<img width={100} src={teamAData.img} alt="" />
 			</div>
 			<div className="vs">
-            <span>{data.type}</span>
+				<span>{data.type}</span>
 				<img src="/images/vs.png" alt="" width={100} />
 				<span className={data.status.toLowerCase().replace(/\s/, "-")}>{data.status}</span>
 			</div>
-			<div className="team">
+			<div className={"team" + (won == "team-a" ? " lost-team" : "")}>
 				<span>{teamBData.teamName}</span>
 				<br />
 				<img width={100} src={teamBData.img} alt="" />
