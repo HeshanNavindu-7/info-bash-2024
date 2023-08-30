@@ -12,14 +12,14 @@ export function useUser() {
 export function AuthProvider({ children }) {
 	const [user, setUser] = useState({
 		data: undefined,
-		isAdmin: false,
+		isAdmin: null,
 	});
 
 	useEffect(() => {
 		return onAuthStateChanged(Auth, (user) => {
 			setUser({
 				data: user,
-				isAdmin: false,
+				isAdmin: null,
 			});
 
 			if (user) {
