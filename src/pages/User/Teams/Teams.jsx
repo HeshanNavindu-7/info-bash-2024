@@ -14,7 +14,7 @@ function Teams() {
 	}, []);
 
 	return (
-		<div>
+		<div className="teams">
 			{teams.map((i) => (
 				<TeamView key={i.id} data={i} />
 			))}

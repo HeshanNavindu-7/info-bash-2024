@@ -42,28 +42,27 @@ function TeamView({ data, admin }) {
 				<img width="100" src={img} alt="" />
 			</div>
 			<div>
-				<p>Players</p>
 				<ul>
 					{data.players.map((i, k) => (
 						<li key={k}>{i}</li>
 					))}
 				</ul>
-
-				{admin === true && (
-					<div>
-						{data.status === "pending" && (
-							<button disabled={appDis} onClick={() => approve(data.id)}>
-								Approve
-							</button>
-						)}
-						{data.status === "approved" && (
-							<button disabled={appDis} onClick={() => deleteTeam(data.id)}>
-								Delete
-							</button>
-						)}
-					</div>
-				)}
 			</div>
+
+			{admin === true && (
+				<div>
+					{data.status === "pending" && (
+						<button disabled={appDis} onClick={() => approve(data.id)}>
+							Approve
+						</button>
+					)}
+					{data.status === "approved" && (
+						<button disabled={appDis} onClick={() => deleteTeam(data.id)}>
+							Delete
+						</button>
+					)}
+				</div>
+			)}
 		</div>
 	);
 }
