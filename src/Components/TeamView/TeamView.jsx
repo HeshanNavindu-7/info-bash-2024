@@ -61,6 +61,7 @@ function TeamView({ data, admin }) {
 							Delete
 						</button>
 					)}
+               <p>{data.id}</p>
 				</div>
 			)}
 		</div>
