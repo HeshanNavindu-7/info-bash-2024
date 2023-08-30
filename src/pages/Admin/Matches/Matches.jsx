@@ -27,6 +27,7 @@ function Matches() {
 			team_count = Math.max(team_count, group_data.teams.length);
 
 			for (let x in group_data.teams) {
+				if (group_data.teams.length - 1 == x) break;
 				const teamA = group_data.teams[x];
 
 				for (let y = parseInt(x) + 1; y < group_data.teams.length; y++) {
@@ -50,21 +51,42 @@ function Matches() {
 				}
 			}
 		});
-		matches = shuffleMatches(matches, groups.docs.length, team_count);
+
+		matches = shuffleMatches(matches);
+		setDis(false);
+
 		const tasks = [];
 		for (let x in matches) {
 			const match = matches[x];
 			match.order = parseInt(x);
+			console.log(match);
 			tasks.push(addDoc(mc, match));
 		}
 		Promise.all(tasks).then((_) => setDis(false));
 	}
 
-	function shuffleMatches(matches, group_count, team_count) {
+	function shuffleMatches(matches) {
+		const data = {};
+		const groups = [];
 		const shuffled = [];
-		for (let t = 0; t < team_count; t++) {
-			for (let g = 0; g < group_count; g++) {
-				shuffled.push(matches[g * team_count + t]);
+
+		for (let match of matches) {
+			if (!(match.groupName in data)) {
+				data[match.groupName] = [];
+			}
+
+			data[match.groupName].push(match);
+		}
+
+		for (const g in data) {
+			groups.push(data[g]);
+		}
+
+		while (shuffled.length != matches.length) {
+			for (const g in groups) {
+				const group = groups[g];
+				const choosed = group.pop();
+				shuffled.push(choosed);
 			}
 		}
 		return shuffled;
