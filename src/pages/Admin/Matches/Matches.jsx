@@ -59,7 +59,6 @@ function Matches() {
 		for (let x in matches) {
 			const match = matches[x];
 			match.order = parseInt(x);
-			console.log(match);
 			tasks.push(addDoc(mc, match));
 		}
 		Promise.all(tasks).then((_) => setDis(false));
@@ -86,6 +85,7 @@ function Matches() {
 			for (const g in groups) {
 				const group = groups[g];
 				const choosed = group.pop();
+				if (choosed == undefined) continue;
 				shuffled.push(choosed);
 			}
 		}
