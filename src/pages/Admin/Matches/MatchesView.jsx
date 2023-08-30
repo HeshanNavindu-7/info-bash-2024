@@ -2,25 +2,26 @@ import { collection, doc, getDoc, getDocs, orderBy, query } from "firebase/fires
 import { useEffect, useState } from "react";
 import { FS } from "../../../firebase.init";
 import { NavLink } from "react-router-dom";
+import MatchView from "../../User/Matches/MatchView";
 
-function MatchesView() {
+function MatchesView({ render }) {
 	const [matches, setMatches] = useState([]);
 
 	useEffect(() => {
 		const mc = collection(FS, "matches");
 		getDocs(query(mc, orderBy("order"))).then((snap) => setMatches(snap.docs.map((i) => ({ ...i.data(), id: i.id }))));
-	}, []);
+	}, [render]);
 
 	return (
-		<div>
+		<div className="user-matches">
 			{matches.map((i) => (
-				<MatchView key={i.id} data={i} />
+				<MatchView key={i.id} isAdmin={true} data={i} />
 			))}
 		</div>
 	);
 }
 
-function MatchView({ data }) {
+function MatchViews({ data }) {
 	const [t1, setT1] = useState({});
 	const [t2, setT2] = useState({});
 

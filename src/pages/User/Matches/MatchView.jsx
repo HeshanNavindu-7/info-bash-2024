@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { App, FS } from "../../../firebase.init";
 import { useNavigate } from "react-router-dom";
 
-function MatchView({ data }) {
+function MatchView({ data, isAdmin }) {
 	const { teamA, teamB } = data;
 	const [teamAData, setTeamAData] = useState({ img: "/images/info_bash-1.png" });
 	const [teamBData, setTeamBData] = useState({ img: "/images/info_bash-1.png" });
@@ -38,7 +38,7 @@ function MatchView({ data }) {
 	return (
 		<div
 			onClick={() =>
-				navigate("/matches/" + data.id, {
+				navigate((isAdmin === true ? "/admin" : "") + "/matches/" + data.id, {
 					state: {
 						teamAData,
 						teamBData,
@@ -53,6 +53,7 @@ function MatchView({ data }) {
 				<img width={100} src={teamAData.img} alt="" />
 			</div>
 			<div className="vs">
+            <span>{data.type}</span>
 				<img src="/images/vs.png" alt="" width={100} />
 				<span className={data.status.toLowerCase().replace(/\s/, "-")}>{data.status}</span>
 			</div>
